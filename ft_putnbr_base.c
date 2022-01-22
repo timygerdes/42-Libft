@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgerdes <tgerdes@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/13 09:40:38 by tgerdes           #+#    #+#             */
-/*   Updated: 2021/11/09 15:43:39 by tgerdes          ###   ########.fr       */
+/*   Created: 2021/11/09 15:42:40 by tgerdes           #+#    #+#             */
+/*   Updated: 2021/11/09 15:42:50 by tgerdes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_putnbr_base(unsigned long n, char *base)
 {
-	size_t	c;
+	unsigned long	base_len;
+	unsigned long	num;
+	int				l;
 
-	c = 0;
-	if (!s)
-		return (0);
-	while (s[c] != '\0')
-		c++;
-	return (c);
+	l = 1;
+	num = n;
+	base_len = ft_strlen(base);
+	if (num == 0)
+	{
+		ft_putchar('0');
+		return (l);
+	}
+	if (num >= base_len)
+	{
+		l += ft_putnbr_base(num / base_len, base);
+		ft_putchar(base[num % base_len]);
+	}
+	else if (num < base_len)
+		ft_putchar(base[num]);
+	return (l);
 }

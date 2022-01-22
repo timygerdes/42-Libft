@@ -6,7 +6,7 @@
 /*   By: tgerdes <tgerdes@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 13:21:28 by tgerdes           #+#    #+#             */
-/*   Updated: 2021/06/03 23:35:24 by tgerdes          ###   ########.fr       */
+/*   Updated: 2021/11/09 17:08:21 by tgerdes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
+# include <stdarg.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4096
+# endif
+
+# ifndef MAX_FD
+#  define MAX_FD 1024
+# endif
 
 typedef struct s_list
 {
@@ -22,6 +32,15 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
+typedef struct s_print
+{
+	va_list	args;
+	int		total_len;
+}	t_print;
+
+/*
+	Libft functions
+*/
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
@@ -65,5 +84,39 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void*));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+/*
+	get_next_line functions
+*/
+char	*get_next_line(int fd);
+char	*ft_gnl_strchr(const char *s, int c);
+char	*ft_gnl_strjoin(char const *s1, char const *s2);
+size_t	slen(const char *s);
+char	*ft_gnl_substr(char const *s, unsigned int start, size_t len);
+void	*ft_gnl_memcpy(void *dst, const void *src, size_t n);
+void	*ft_gnl_memmove(void *dst, const void *src, size_t len);
+void	*ft_gnl_malloc(size_t count, size_t size);
+char	*ft_gnl_prepare_string(int fd, int bytes_read, char *rtn_str, char **tmpstr);
+/*
+	printf functions
+*/
+int		ft_numlen_base(unsigned long n, int base);
+char	*ft_itoa_base(char *str, unsigned long n, int base, int c);
+int		ft_numlen(long n);
+int		ft_putnbr_base(unsigned long n, char *base);
+char	*ft_uitoa(unsigned int nb);
+
+t_print	*ft_initialise_tab(t_print *tab);
+int		ft_check_arg_type(t_print *tab, const char *format, int pos);
+int		ft_printf(const char *format, ...);
+void	ft_print_unsigned_int(t_print *tab);
+void	ft_print_int(t_print *tab);
+void	ft_print_hexa_int(t_print *tab, int c);
+void	ft_print_char(t_print *tab);
+void	ft_print_string(t_print *tab);
+void	ft_print_pointer(t_print *tab);
+void	ft_print_percentage(t_print *tab);
+char	*ft_convert(int n, int digit_len, int is_neg);
+void	ft_putchar(char c);
+void	ft_write_zero(t_print *tab);
 
 #endif

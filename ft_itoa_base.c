@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgerdes <tgerdes@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/13 09:40:38 by tgerdes           #+#    #+#             */
-/*   Updated: 2021/11/09 15:43:39 by tgerdes          ###   ########.fr       */
+/*   Created: 2021/11/09 15:39:04 by tgerdes           #+#    #+#             */
+/*   Updated: 2021/11/09 15:40:29 by tgerdes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_itoa_base(char *str, unsigned long n, int base, int c)
 {
-	size_t	c;
+	int		i;
 
-	c = 0;
-	if (!s)
-		return (0);
-	while (s[c] != '\0')
-		c++;
-	return (c);
+	i = 0;
+	if (n == 0)
+		str[i++] = '0';
+	while (n > 0)
+	{
+		if (base > 10 && (n % base >= 10))
+			str[i++] = (n % base) - 10 + c;
+		else
+			str[i++] = (n % base) + '0';
+		n /= base;
+	}
+	str[i] = '\0';
+	return (str);
 }

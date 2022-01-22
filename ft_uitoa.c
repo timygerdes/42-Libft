@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_uitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgerdes <tgerdes@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/13 09:40:38 by tgerdes           #+#    #+#             */
-/*   Updated: 2021/11/09 15:43:39 by tgerdes          ###   ########.fr       */
+/*   Created: 2021/11/09 15:43:57 by tgerdes           #+#    #+#             */
+/*   Updated: 2021/11/09 15:44:10 by tgerdes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_uitoa(unsigned int nb)
 {
-	size_t	c;
+	char	*a;
+	int		l;
 
-	c = 0;
-	if (!s)
-		return (0);
-	while (s[c] != '\0')
-		c++;
-	return (c);
+	l = ft_numlen(nb);
+	a = (char *)malloc(sizeof(char) * (l + 1));
+	if (!a)
+		return (NULL);
+	a[l--] = '\0';
+	if (nb == 0)
+		a[l] = 0 + '0';
+	while (nb > 0)
+	{
+		a[l--] = nb % 10 + '0';
+		nb /= 10;
+	}
+	return (a);
 }

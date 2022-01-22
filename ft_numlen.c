@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_numlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgerdes <tgerdes@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/13 09:40:38 by tgerdes           #+#    #+#             */
-/*   Updated: 2021/11/09 15:43:39 by tgerdes          ###   ########.fr       */
+/*   Created: 2021/11/09 15:41:19 by tgerdes           #+#    #+#             */
+/*   Updated: 2021/11/09 15:41:41 by tgerdes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_numlen(long n)
 {
-	size_t	c;
+	int	count;
 
-	c = 0;
-	if (!s)
-		return (0);
-	while (s[c] != '\0')
-		c++;
-	return (c);
+	count = 0;
+	if (n <= 0)
+	{
+		count += 1;
+		n *= -1;
+	}
+	while (n > 0)
+	{
+		count++;
+		n /= 10;
+	}
+	return (count);
 }
