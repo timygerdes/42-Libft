@@ -6,26 +6,26 @@
 /*   By: tgerdes <tgerdes@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 15:41:19 by tgerdes           #+#    #+#             */
-/*   Updated: 2021/11/09 15:41:41 by tgerdes          ###   ########.fr       */
+/*   Updated: 2022/02/08 21:54:30 by tgerdes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_numlen(long n)
+int	ft_numlen(long nbr)
 {
 	int	count;
 
 	count = 0;
-	if (n <= 0)
+	if (nbr <= 0)
 	{
 		count += 1;
-		n *= -1;
+		nbr *= -1;
 	}
-	while (n > 0)
+	while (nbr > 0)
 	{
 		count++;
-		n /= 10;
+		nbr /= 10;
 	}
 	return (count);
 }

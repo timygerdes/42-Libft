@@ -6,26 +6,26 @@
 /*   By: tgerdes <tgerdes@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 15:39:42 by tgerdes           #+#    #+#             */
-/*   Updated: 2021/11/09 15:40:34 by tgerdes          ###   ########.fr       */
+/*   Updated: 2022/02/08 21:57:13 by tgerdes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_numlen_base(unsigned long n, int base)
+int	ft_numlen_base(unsigned long nbr, int base)
 {
-	int		i;
+	int		count;
 
-	i = 0;
-	if (n == 0)
+	count = 0;
+	if (nbr == 0)
 	{
-		i += 1;
-		return (i);
+		count += 1;
+		return (count);
 	}
-	while (n > 0)
+	while (nbr > 0)
 	{
-		i++;
-		n /= base;
+		count++;
+		nbr /= base;
 	}
-	return (i);
+	return (count);
 }

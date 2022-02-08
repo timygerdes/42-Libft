@@ -6,22 +6,22 @@
 /*   By: tgerdes <tgerdes@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 18:43:08 by tgerdes           #+#    #+#             */
-/*   Updated: 2022/01/22 13:39:41 by tgerdes          ###   ########.fr       */
+/*   Updated: 2022/02/08 22:10:01 by tgerdes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *ptr, int c, size_t len)
 {
-	unsigned char	*ptr;
+	unsigned char	*str;
 
-	ptr = b;
+	str = ptr;
 	while (len > 0)
 	{
-		*ptr = c;
+		*str = c;
 		len--;
-		ptr++;
+		str++;
 	}
-	return (b);
+	return (ptr);
 }

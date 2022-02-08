@@ -6,7 +6,7 @@
 /*   By: tgerdes <tgerdes@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 13:11:37 by tgerdes           #+#    #+#             */
-/*   Updated: 2021/05/26 13:14:17 by tgerdes          ###   ########.fr       */
+/*   Updated: 2022/02/08 21:51:18 by tgerdes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ void	ft_putnbr_fd(int n, int fd)
 		n = -(n);
 	}
 	if (n < 10)
-	{
 		ft_putchar_fd(n + '0', fd);
-	}
 	else
 	{
 		ft_putnbr_fd(n / 10, fd);

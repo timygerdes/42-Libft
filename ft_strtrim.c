@@ -6,51 +6,51 @@
 /*   By: tgerdes <tgerdes@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 16:31:30 by tgerdes           #+#    #+#             */
-/*   Updated: 2021/05/31 21:40:26 by tgerdes          ###   ########.fr       */
+/*   Updated: 2022/02/08 22:21:44 by tgerdes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_check_string(char ch, char const *set)
+static int	ft_check_string(char c, char const *set)
 {
 	size_t	i;
 
 	i = 0;
 	while (set[i])
 	{
-		if (set[i] == ch)
+		if (set[i] == c)
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *str, char const *set)
 {
-	int		c;
 	int		i;
 	int		j;
-	char	*ptr;
+	int		str_len;
+	char	*tristr;
 
-	if (!s1 || !set)
+	if (!str || !set)
 		return (NULL);
-	c = 0;
 	i = 0;
-	j = ft_strlen(s1);
-	while (ft_check_string(s1[i], set))
+	j = 0;
+	str_len = ft_strlen(str);
+	while (ft_check_string(str[i], set))
 		i++;
-	while (ft_check_string(s1[j - 1], set) && j > i)
-		j--;
-	if (j - i <= 0)
+	while (ft_check_string(str[str_len - 1], set) && str_len > i)
+		str_len--;
+	if (str_len - i <= 0)
 		return ((char *)ft_calloc(1, sizeof(char)));
-	ptr = (char *)ft_calloc(((j - i) + 1), sizeof(char));
-	if (!ptr)
+	tristr = (char *)ft_calloc(((str_len - i) + 1), sizeof(char));
+	if (!tristr)
 		return (NULL);
-	while (((i + c) <= j - 1) && j > 0)
+	while (((i + j) <= str_len - 1) && str_len > 0)
 	{
-		ptr[c] = s1[i + c];
-		c++;
+		tristr[j] = str[i + j];
+		j++;
 	}
-	return (ptr);
+	return (tristr);
 }

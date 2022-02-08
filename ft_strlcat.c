@@ -6,7 +6,7 @@
 /*   By: tgerdes <tgerdes@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 19:21:19 by tgerdes           #+#    #+#             */
-/*   Updated: 2021/05/25 11:49:59 by tgerdes          ###   ########.fr       */
+/*   Updated: 2022/02/08 18:49:30 by tgerdes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst_len = ft_strlen(dst);
 	src_len = ft_strlen(src);
 	if (dstsize <= dst_len)
-	{
 		return (src_len + dstsize);
-	}
 	j = dst_len;
 	while (src[i] != '\0' && j < dstsize - 1)
 	{

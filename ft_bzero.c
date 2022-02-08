@@ -6,21 +6,21 @@
 /*   By: tgerdes <tgerdes@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 09:59:09 by tgerdes           #+#    #+#             */
-/*   Updated: 2022/01/22 13:36:23 by tgerdes          ###   ########.fr       */
+/*   Updated: 2022/02/08 22:07:03 by tgerdes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_bzero(void *ptr, size_t n)
 {
-	char	*ptr;
+	char	*str;
 
-	ptr = s;
+	str = ptr;
 	while (n > 0)
 	{
-		*ptr = '\0';
+		*str = '\0';
 		n--;
-		ptr++;
+		str++;
 	}
 }

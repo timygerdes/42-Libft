@@ -6,28 +6,28 @@
 /*   By: tgerdes <tgerdes@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 15:43:57 by tgerdes           #+#    #+#             */
-/*   Updated: 2021/11/09 15:44:10 by tgerdes          ###   ########.fr       */
+/*   Updated: 2022/02/08 21:57:41 by tgerdes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_uitoa(unsigned int nb)
+char	*ft_uitoa(unsigned int nbr)
 {
-	char	*a;
-	int		l;
+	char	*str;
+	int		nbr_len;
 
-	l = ft_numlen(nb);
-	a = (char *)malloc(sizeof(char) * (l + 1));
-	if (!a)
+	nbr_len = ft_numlen(nbr);
+	str = (char *)malloc(sizeof(char) * (nbr_len + 1));
+	if (!str)
 		return (NULL);
-	a[l--] = '\0';
-	if (nb == 0)
-		a[l] = 0 + '0';
-	while (nb > 0)
+	str[nbr_len--] = '\0';
+	if (nbr == 0)
+		str[nbr_len] = 0 + '0';
+	while (nbr > 0)
 	{
-		a[l--] = nb % 10 + '0';
-		nb /= 10;
+		str[nbr_len--] = nbr % 10 + '0';
+		nbr /= 10;
 	}
-	return (a);
+	return (str);
 }
