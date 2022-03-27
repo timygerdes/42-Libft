@@ -6,7 +6,7 @@
 /*   By: tgerdes <tgerdes@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 13:21:28 by tgerdes           #+#    #+#             */
-/*   Updated: 2022/02/08 22:31:53 by tgerdes          ###   ########.fr       */
+/*   Updated: 2022/03/27 15:20:04 by tgerdes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ char		*ft_gnl_substr(char const *s, unsigned int start, size_t len);
 void		*ft_gnl_memcpy(void *dst, const void *src, size_t n);
 void		*ft_gnl_memmove(void *dst, const void *src, size_t len);
 void		*ft_gnl_malloc(size_t count, size_t size);
-char		*ft_gnl_prepare_string(int fd, int bytes_read, char *rtn_str, char **tmpstr);
+char		*ft_gnl_prepare_string(int fd, int bytes_read, char *rtn_str, \
+			char **tmpstr);
 /*
 	printf functions
 */

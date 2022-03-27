@@ -6,7 +6,7 @@
 /*   By: tgerdes <tgerdes@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 23:20:10 by tgerdes           #+#    #+#             */
-/*   Updated: 2022/01/22 13:42:33 by tgerdes          ###   ########.fr       */
+/*   Updated: 2022/03/27 15:24:22 by tgerdes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	*ft_gnl_malloc(size_t count, size_t size)
 	return (rtn_str);
 }
 
-char	*ft_gnl_prepare_string(int fd, int bytes_read, char *rtn_str, char **tmpstr)
+char	*ft_gnl_prepare_string(int fd, int bytes_read, char *rtn_str, \
+		char **tmp)
 {
 	static char	buf[MAX_FD][BUFFER_SIZE + 1];
 
@@ -79,9 +80,9 @@ char	*ft_gnl_prepare_string(int fd, int bytes_read, char *rtn_str, char **tmpstr
 			return (rtn_str);
 		}
 	}
-	*tmpstr = ft_gnl_strjoin(rtn_str, buf[fd]);
-	rtn_str = ft_gnl_substr(*tmpstr, 0, ((ft_gnl_strchr(*tmpstr, '\n') - *tmpstr + 1)));
-	ft_memmove(buf[fd], *tmpstr + slen(rtn_str), slen(*tmpstr) - slen(rtn_str));
-	bzero(&buf[fd][slen(*tmpstr) - slen(rtn_str)], 1);
+	*tmp = ft_gnl_strjoin(rtn_str, buf[fd]);
+	rtn_str = ft_gnl_substr(*tmp, 0, ((ft_strchr(*tmp, '\n') - *tmp + 1)));
+	ft_memmove(buf[fd], *tmp + slen(rtn_str), slen(*tmp) - slen(rtn_str));
+	bzero(&buf[fd][slen(*tmp) - slen(rtn_str)], 1);
 	return (rtn_str);
 }
