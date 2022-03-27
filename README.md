@@ -1,7 +1,7 @@
 # Libft
 
-
-
+![](https://github.com/timygerdes/Libft/workflows/norminette/badge.svg)
+![](https://github.com/timygerdes/Libft/workflows/build/badge.svg)
 ![](https://img.shields.io/tokei/lines/github/timygerdes/Libft?style=plastic?color=blue)
 
 ## About
